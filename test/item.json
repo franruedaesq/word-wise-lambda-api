@@ -1,0 +1,24 @@
+{
+    "id": "1",
+    "title": {
+      "german": "Title in German",
+      "english": "Title in English"
+    },
+    "text": "Learning content text",
+    "type": "article",
+    "size": "large",
+    "difficulty": "medium",
+    "flashcards": [
+      {
+        "id": "1",
+        "front": "Front of flashcard 1",
+        "back": "Back of flashcard 1"
+      },
+      {
+        "id": "2",
+        "front": "Front of flashcard 2",
+        "back": "Back of flashcard 2"
+      }
+    ]
+}
+  

@@ -1,0 +1,47 @@
+org: franruedaesq
+app: word-wise
+service: word-wise
+
+custom:
+  tableName: 'word-wise-content'
+provider:
+  name: aws
+  runtime: nodejs14.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:*:*:table/${self:custom.tableName}"
+  environment:
+    LEARNING_CONTENT_TABLE: ${self:custom.tableName}
+
+functions:
+  addContent:
+    handler: handler/addContent.addContent
+    events:
+      - http:
+          path: learningContent/addContent
+          method: post
+  getAllContent:
+    handler: handler/getAllContent.getAllContent
+    events:
+      - http:
+          path: learningContent/getAllContent
+          method: get
+  getContentByID:
+    handler: handler/getContentByID.getContentByID
+    events:
+      - http:
+          path: learningContent/getContentByID
+          method: get
+  getText:
+    handler: handler/getText.getText
+    events:
+      - http:
+          path: learningContent/getText
+          method: post
